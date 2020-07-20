@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+    {% for post in post_list %}    
+    <div class="post-preview">
+          <a href="{% url 'post_detail' post.slug  %}">
+            <h3 class="post-title">
+              {{ post.title }}
+            </h3>
+            <h4 class="post-subtitle">
+              {{post.content|slice:":200" }}
+            </h4>
+          </a>
+          <p class="post-meta">Posted by {{ post.author }} | {{ post.created_on}} </p>
+          <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary" style="color:white;">Read More &rarr;</a>
+        </div>
+        <hr>
+    {% endfor %}    
+        <div class="clearfix">
+          <a class="btn btn-primary float-right" href="{% url 'post' %}">Older Posts →</a>
+        </div>
+{% endblock %}
+
+
+
+
